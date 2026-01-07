@@ -180,28 +180,38 @@
         /* --- MOBILE FIXES --- */
         @media (max-width: 768px) {
             .container {
-                padding: 20px 10px; 
-                width: 95%;
+                /* Drastically reduce padding to give the art more room */
+                padding: 20px 2px !important; 
+                width: 100% !important;
+                border-left: none;
+                border-right: none;
             }
 
             pre {
-                /* Reduced from 1.4vw to 1.1vw for better fit */
-                font-size: 1.1vw; 
-                line-height: 1.1vw;
+                /* Force the font to be microscopic if necessary */
+                font-size: 6px !important; 
+                line-height: 6px !important;
                 
-                /* Turn off bold on mobile to save horizontal space */
-                font-weight: normal; 
+                /* CRITICAL: This forces the text to NEVER wrap to the next line */
+                white-space: pre !important; 
                 
-                /* Allows scrolling if it still overflows */
-                overflow-x: scroll;
+                /* CRITICAL: If it's still too wide, scroll sideways instead of exploding */
+                overflow-x: scroll !important;
+                display: block !important;
+                width: 100% !important;
+                
+                /* Remove bold to save width */
+                font-weight: normal !important; 
             }
 
             h1 {
                 font-size: 1.8rem; 
             }
 
-            .subtitle {
-                font-size: 0.9rem;
+            /* Adjust the buttons to fit the tighter padding */
+            .btn {
+                max-width: 90%;
+                margin: 0 auto;
             }
         }
     </style>
@@ -289,5 +299,4 @@
     </script>
 
 </body>
-
 </html>
