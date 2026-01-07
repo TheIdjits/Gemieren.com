@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TG37M1F9PM"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+		<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-TG37M1F9PM"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
 
-  gtag('config', 'G-TG37M1F9PM');
-</script>
+	gtag('config', 'G-TG37M1F9PM');
+	</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gemieren | The Archives</title>
@@ -137,14 +137,14 @@
                 <br><span style="font-size:0.7em; opacity:0.7; text-transform:none;">(we get $2 per sale 🤣)</span>
             </a>
 
-            <button class="btn" onclick="openModal()">
-                [Donate DOGE 🐕]
-                <br><span style="font-size:0.7em; opacity:0.7; text-transform:none;">(to The Idjits of this series)</span>
-            </button>
+            <button class="btn" onclick="openModal(); gtag('event', 'click_donate', {'event_category': 'engagement'});">
+				[Donate DOGE 🐕]
+				<br><span style="font-size:0.7em; opacity:0.7; text-transform:none;">(to The Idjits of this series)</span>
+			</button>
         </div>
 
         <footer>
-            &copy; 2026 <a href="https://theidjits.com" class="secret-link">The Idjits.</a><br>
+            &copy; 2026 <a href="https://theidjits.com" class="secret-link" onclick="gtag('event', 'found_secret', {'event_category': 'easter_egg'});">The Idjits.</a><br>
             <small>System Status: Online</small>
         </footer>
     </div>
@@ -188,5 +188,4 @@
     </script>
 
 </body>
-
 </html>
