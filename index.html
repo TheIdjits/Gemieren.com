@@ -36,13 +36,14 @@
             background: rgba(0,0,0,0.8);
         }
 
-        /* ASCII Art Styling */
+        /* ASCII Art Styling - FIXED SCROLLBAR */
         pre {
-            font-size: 10px;
+            font-size: 10px; /* Adjust this if it's still too wide */
             line-height: 10px;
             margin-bottom: 20px;
-            overflow-x: hidden;
-            white-space: pre-wrap; 
+            overflow: hidden; /* This KILLS the scrollbar */
+            white-space: pre; 
+            color: var(--text-color);
         }
 
         h1 {
