@@ -180,35 +180,45 @@
         /* --- MOBILE FIXES --- */
         @media (max-width: 768px) {
             .container {
-                /* Drastically reduce padding to give the art more room */
-                padding: 20px 2px !important; 
+                /* 1. Remove padding so the art has the full screen width */
+                padding: 20px 0px !important; 
                 width: 100% !important;
-                border-left: none;
-                border-right: none;
+                border: none; /* Remove border to save 2px */
             }
 
             pre {
-                /* Force the font to be microscopic if necessary */
-                font-size: 6px !important; 
-                line-height: 6px !important;
+                /* 2. THE ASPECT RATIO FIX */
+                /* Squish the width to 70% to mimic desktop Courier New */
+                transform: scaleX(0.7); 
+                transform-origin: left top; /* Pin it to the left so it doesn't float away */
                 
-                /* CRITICAL: This forces the text to NEVER wrap to the next line */
-                white-space: pre !important; 
+                /* Compensate for the squish: 
+                   If we shrink visual width to 70%, we need to allow the container 
+                   to be wider so the text thinks it has room. */
+                width: 140% !important; 
                 
-                /* CRITICAL: If it's still too wide, scroll sideways instead of exploding */
-                overflow-x: scroll !important;
-                display: block !important;
-                width: 100% !important;
+                /* 3. THE NO-WRAP ENFORCER */
+                white-space: pre !important; /* STRICTLY forbids wrapping */
+                overflow-x: hidden; /* Hides the scrollbar (optional, change to scroll if needed) */
                 
-                /* Remove bold to save width */
-                font-weight: normal !important; 
+                /* 4. Sizing adjustments */
+                font-size: 10px !important;
+                line-height: 10px !important;
+                font-weight: normal !important;
+                letter-spacing: -0.5px; /* Pulls blocks tighter together */
+                
+                /* Center the squished element */
+                margin-left: 5%; 
             }
 
             h1 {
                 font-size: 1.8rem; 
             }
 
-            /* Adjust the buttons to fit the tighter padding */
+            .subtitle {
+                padding: 0 10px;
+            }
+            
             .btn {
                 max-width: 90%;
                 margin: 0 auto;
