@@ -87,6 +87,18 @@
                 overflow-x: auto;
             }
         }
+		
+		/* Secret Footer Link */
+        .secret-link {
+            text-decoration: none;   /* No underline */
+            color: inherit;          /* Use the parent's grey color (#555) */
+            cursor: pointer;         /* Shows the hand icon when hovered */
+            transition: color 0.3s;
+        }
+
+        .secret-link:hover {
+            color: var(--text-color); /* Flashes green when found */
+        }
     </style>
 </head>
 <body>
@@ -123,7 +135,7 @@
         </div>
 
         <footer>
-            &copy; 2026 The Idjits.<br>
+            &copy; 2026 <a href="https://theidjits.com" class="secret-link">The Idjits.</a><br>
             <small>System Status: Online</small>
         </footer>
     </div>
