@@ -7,14 +7,12 @@
 
     <style>
         /* --- GLOBAL RESET --- */
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         :root {
             --bg-color: #0d0d0d;
-            --text-color: #33ff00; /* Hacker Green */
-            --accent: #ff00ff; /* Spite Pink */
+            --text-color: #33ff00; 
+            --accent: #ff00ff; 
             --font-stack: 'Courier New', Courier, monospace;
         }
 
@@ -41,187 +39,52 @@
             background: rgba(0,0,0,0.8);
         }
 
-        /* ASCII Art Styling */
+        /* ASCII Art Styling for "Archives" */
         pre {
             font-size: 10px; 
             line-height: 10px;
             margin-bottom: 20px;
-            
-            /* CRITICAL FIXES FOR ASCII */
-            white-space: pre;       /* Forces text to NEVER wrap */
-            overflow-x: auto;       /* Adds scrollbar if it's too wide, instead of breaking */
-            overflow-y: hidden;     /* Hides vertical scrollbar */
-            
+            white-space: pre;       
+            overflow: hidden;       
             color: var(--text-color);
             font-weight: bold;
             display: inline-block;
             text-align: left;
-            max-width: 100%;        /* Ensures it stays within the container */
-            
-            /* This stops Android/iOS from inflating the text size */
-            -webkit-text-size-adjust: none;
-            text-size-adjust: none; 
+            max-width: 100%;    
         }
 
-        h1 {
-            font-size: 2.5rem;
-            margin: 10px 0;
-            text-shadow: 2px 2px var(--accent);
-        }
+        h1 { font-size: 2.5rem; margin: 10px 0; text-shadow: 2px 2px var(--accent); }
+        .subtitle { font-size: 1.1rem; opacity: 0.8; margin-bottom: 30px; border-bottom: 1px solid #333; padding-bottom: 20px; }
 
-        .subtitle {
-            font-size: 1.1rem;
-            opacity: 0.8;
-            margin-bottom: 30px;
-            border-bottom: 1px solid #333;
-            padding-bottom: 20px;
-        }
+        /* Buttons */
+        .btn-group { display: flex; flex-direction: column; gap: 15px; align-items: center; width: 100%; }
+        .btn { display: block; width: 100%; max-width: 300px; padding: 15px; font-family: var(--font-stack); font-weight: bold; text-decoration: none; text-transform: uppercase; border: 2px solid var(--text-color); transition: 0.2s; cursor: pointer; background: transparent; color: var(--text-color); }
+        .btn:hover { background: rgba(51, 255, 0, 0.1); box-shadow: 0 0 15px var(--text-color); transform: translateY(-2px); }
+        .btn-amazon { border-color: var(--accent); color: var(--accent); }
+        .btn-amazon:hover { background: rgba(255, 0, 255, 0.1); box-shadow: 0 0 15px var(--accent); }
 
-        .btn-group {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            align-items: center;
-            width: 100%; 
-        }
-
-        .btn {
-            display: block;
-            width: 100%;
-            max-width: 300px;
-            padding: 15px;
-            font-family: var(--font-stack);
-            font-weight: bold;
-            text-decoration: none;
-            text-transform: uppercase;
-            border: 2px solid var(--text-color);
-            transition: 0.2s;
-            cursor: pointer;
-            background: transparent;
-            color: var(--text-color);
-            box-sizing: border-box; 
-        }
-
-        .btn:hover {
-            background: rgba(51, 255, 0, 0.1);
-            box-shadow: 0 0 15px var(--text-color);
-            transform: translateY(-2px);
-        }
-
-        .btn-amazon {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        .btn-amazon:hover {
-            background: rgba(255, 0, 255, 0.1);
-            box-shadow: 0 0 15px var(--accent);
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 100; 
-            left: 0;
-            top: 0;
-            width: 100%; 
-            height: 100%; 
-            background-color: rgba(0,0,0,0.9); 
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background-color: #111;
-            padding: 20px;
-            border: 2px solid var(--text-color);
-            width: 90%;
-            max-width: 400px;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 0 30px var(--text-color);
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+        /* Modal & Footer (Unchanged) */
+        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); justify-content: center; align-items: center; }
+        .modal-content { background-color: #111; padding: 20px; border: 2px solid var(--text-color); width: 90%; max-width: 400px; text-align: center; position: relative; box-shadow: 0 0 30px var(--text-color); }
+        .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
         .close:hover { color: var(--accent); }
+        .qr-img { width: 200px; height: 200px; margin: 15px auto; border: 5px solid white; border-radius: 10px; display: block; }
+        .wallet-box { background: #222; padding: 10px; margin-top: 10px; word-break: break-all; font-size: 0.8rem; border: 1px dashed #555; }
+        footer { margin-top: auto; padding-top: 30px; font-size: 0.8rem; color: #555; }
 
-        .qr-img {
-            width: 200px;
-            height: 200px;
-            margin: 15px auto;
-            border: 5px solid white;
-            border-radius: 10px;
-            display: block;
-        }
-
-        .wallet-box {
-            background: #222;
-            padding: 10px;
-            margin-top: 10px;
-            word-break: break-all;
-            font-size: 0.8rem;
-            border: 1px dashed #555;
-        }
-
-        footer {
-            margin-top: auto;
-            padding-top: 30px;
-            font-size: 0.8rem;
-            color: #555;
-        }
-
-        /* --- MOBILE FIXES --- */
+        /* --- SIMPLIFIED MOBILE FIXES --- */
         @media (max-width: 768px) {
             .container {
-                /* 1. Remove padding so the art has the full screen width */
-                padding: 20px 0px !important; 
-                width: 100% !important;
-                border: none; /* Remove border to save 2px */
+                padding: 20px 10px; /* Standard padding is fine now */
+                width: 95%;
             }
-
-            pre {
-                /* 2. THE ASPECT RATIO FIX */
-                /* Squish the width to 70% to mimic desktop Courier New */
-                transform: scaleX(0.5); 
-                transform-origin: left top; /* Pin it to the left so it doesn't float away */
-                
-                /* Compensate for the squish: 
-                   If we shrink visual width to 70%, we need to allow the container 
-                   to be wider so the text thinks it has room. */
-                width: 140% !important; 
-                
-                /* 3. THE NO-WRAP ENFORCER */
-                white-space: pre !important; /* STRICTLY forbids wrapping */
-                overflow-x: hidden; /* Hides the scrollbar (optional, change to scroll if needed) */
-                
-                /* 4. Sizing adjustments */
-                font-size: 10px !important;
-                line-height: 10px !important;
-                font-weight: normal !important;
-                letter-spacing: -0.5px; /* Pulls blocks tighter together */
-                
-                /* Center the squished element */
-                margin-left: 5%; 
-            }
-
-            h1 {
-                font-size: 1.8rem; 
-            }
-
-            .subtitle {
-                padding: 0 10px;
-            }
+            h1 { font-size: 1.8rem; }
             
-            .btn {
-                max-width: 90%;
-                margin: 0 auto;
+            /* "Archives" doesn't need squishing, just normal scrolling if needed */
+            pre {
+                font-size: 8px; /* Slightly smaller for safety */
+                width: 100%;
+                overflow-x: auto;
             }
         }
     </style>
@@ -229,14 +92,9 @@
 <body>
 
     <div class="container">
+        <img src="logo.png" alt="GEMIEREN Archives" style="width: 100%; max-width: 600px; display: block; margin: 0 auto 20px auto;">
+
         <pre>
- ░▒▓██████▓▒░░▒▓████████▓▒░▒▓██████████████▓▒░░▒▓█▓▒░▒▓████████▓▒░▒▓███████▓▒░░▒▓████████▓▒░▒▓███████▓▒░  
-░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░ 
-░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░ 
-░▒▓█▓▒▒▓███▓▒░▒▓██████▓▒░ ░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓██████▓▒░ ░▒▓███████▓▒░░▒▓██████▓▒░ ░▒▓█▓▒░░▒▓█▓▒░ 
-░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░ 
-░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░ 
- ░▒▓██████▓▒░░▒▓████████▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓████████▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓████████▓▒░▒▓█▓▒░░▒▓█▓▒░ 
     _          _    _            
    /_\  _ _ __| |_ (_)_ _____ ___
   / _ \| '_/ _| ' \| \ V / -_|_-<
@@ -250,7 +108,7 @@
         <div class="btn-group">
             <a href="Gemibook1.pdf" class="btn" download>
                 [Download PDF 📑 (Free)]
-				<br><span style="font-size:0.7em; opacity:0.7; text-transform:none;">(99.99% clean of viruses & malware)</span>
+                <br><span style="font-size:0.7em; opacity:0.7; text-transform:none;">(99.99% clean of viruses & malware)</span>
             </a>
 
             <a href="https://a.co/d/2vkRAjo" class="btn btn-amazon" target="_blank">
@@ -260,7 +118,7 @@
 
             <button class="btn" onclick="openModal()">
                 [Donate DOGE 🐕]
-				<br><span style="font-size:0.7em; opacity:0.7; text-transform:none;">(to The Idjits of this series)</span>
+                <br><span style="font-size:0.7em; opacity:0.7; text-transform:none;">(to The Idjits of this series)</span>
             </button>
         </div>
 
@@ -309,5 +167,4 @@
     </script>
 
 </body>
-
 </html>
